@@ -50,42 +50,30 @@ graph TD
     D2 --> E[Price Predictions (per lot per day)]
     E --> F[Bokeh + Panel Dashboard]
 
-🔍 Project Architecture & Workflow
-1. Data Ingestion
-The raw dataset (parking_stream.csv) contains real-time snapshots of 14 parking lots across 73 days.
 
-Each snapshot includes features like timestamp, occupancy, queue length, traffic level, special day flags, and vehicle type.
 
-Pathway's replay_csv() was used to simulate real-time streaming of this data.
+## 🔍 Project Architecture & Workflow
 
-2. Model 1: Baseline Linear Pricing
-A simple reference model:
+### 1. **Data Ingestion**
+- The raw dataset (`parking_stream.csv`) contains real-time snapshots of **14 parking lots** over **73 days**.
+- Each snapshot includes features like:
+  - `timestamp`
+  - `occupancy`
+  - `queue length`
+  - `traffic level`
+  - `special day flags`
+  - `vehicle type`
+- Pathway’s `replay_csv()` was used to simulate **real-time streaming** of this data into a processing pipeline.
 
-Copy
-Edit
+---
+
+### 2. **Model 1: Baseline Linear Pricing**
+A simple reference model for dynamic pricing:
+
+```python
 Price_t+1 = Price_t + α × (Occupancy / Capacity)
-Price increases linearly as occupancy increases.
 
-Used to benchmark improvements in Model 2.
 
-3. Model 2: Demand-Based Pricing
-A weighted model using 5 key demand indicators:
-
-python
-Copy
-Edit
-Demand = α·(Occupancy/Capacity) + β·QueueLength − γ·Traffic + δ·IsSpecialDay + ε·VehicleTypeWeight
-Price = BasePrice · (1 + λ · NormalizedDemand)
-Weights were hand-tuned and interpreted.
-
-Demand was normalized and price was bounded between 0.5× and 2× base price.
-
-Implemented entirely using Pathway.with_columns() and pw.apply() logic.
-
-4. Real-Time Visualization
-A live dashboard was built using Bokeh and Panel.
-
-Users can:
 
 Select a parking lot from a dropdown.
 

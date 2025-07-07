@@ -51,7 +51,7 @@ graph TD
     E --> F[Bokeh + Panel Dashboard]
 
 
-
+--------------------------------------------------------------------------------
 ## 🔍 Project Architecture & Workflow
 
 ### 1. **Data Ingestion**
@@ -80,3 +80,62 @@ Select a parking lot from a dropdown.
 See a time-series plot of real-time pricing.
 
 Each day's price is computed using tumbling windows.
+
+---------------------------------------------------------------------------------------
+Model 2: Demand-Based Pricing
+
+        Demand = α·(Occupancy / Capacity) + β·QueueLength − γ·Traffic + δ·IsSpecialDay + ε·VehicleTypeWeight
+        Price = BasePrice · (1 + λ · NormalizedDemand)
+
+    -- All weights (α, β, γ, δ, ε, λ) were manually tuned and interpreted.
+    
+    -- Demand normalization ensures stable pricing:
+    
+    -- Prices are clipped between 0.5× and 2× the base price.
+    
+    -- Entire logic implemented using Pathway.with_columns() and pw.apply().
+-----------------------------------------------------------------------------------------
+Real-Time Visualization
+
+        A live interactive dashboard was built using Bokeh and Panel.
+
+Features:
+
+        Dropdown to select a parking lot.
+        
+        Real-time line chart showing pricing fluctuations.
+        
+        Prices are computed using tumbling daily windows over the stream.
+-------------------------------------------------------------------------------------
+
+📝 Assumptions
+IsSpecialDay is binary:
+
+    0 = normal, 1 = holiday or event
+    
+    VehicleTypeWeight mapping:
+    
+    car = 1.0
+    
+    bike/cycle = 0.5
+    
+    truck = 1.5
+    
+    TrafficLevel mapping:
+    
+    low = 0.2, average = 0.5, high = 1.0
+    
+    QueueLength capped at 5 for normalization purposes
+------------------------------------------------------------------------------------
+🧠 Future Work
+    ✅ Implement Model 3: Competitive Pricing using lat-long proximity
+    
+    ➕ Add rerouting suggestions for full parking lots
+    
+    📈 Optimize demand weights using historical revenue or occupancy patterns
+
+--------------------------------------------------------------------------------
+👤 Author
+Rishabh Kumar
+Summer Analytics 2025 Participant
+Consulting & Analytics Club × Pathway

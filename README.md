@@ -39,17 +39,7 @@ Real-time streaming was simulated using **Pathway**, and interactive price visua
 
 ## 🏗️ Architecture Diagram (Mermaid)
 
-You can copy this to [Mermaid Live Editor](https://mermaid.live/edit) to render it.
-
-```mermaid
-graph TD
-    A[CSV: Historical Parking Data] -->|Streamed| B(Pathway replay_csv)
-    B --> C{Process Features}
-    C --> D1[Model 1: Linear Pricing]
-    C --> D2[Model 2: Demand-Based Pricing]
-    D2 --> E[Price Predictions (per lot per day)]
-    E --> F[Bokeh + Panel Dashboard]
-
+![image](https://github.com/user-attachments/assets/f212536e-f55e-458b-9577-449594110b29)
 
 ---
 ## 🔍 Project Architecture & Workflow
@@ -70,7 +60,6 @@ graph TD
 ### 2. **Model 1: Baseline Linear Pricing**
 A simple reference model for dynamic pricing:
 
-```python
 Price_t+1 = Price_t + α × (Occupancy / Capacity)
 
 
@@ -83,56 +72,55 @@ Each day's price is computed using tumbling windows.
 
 ---------------------------------------------------------------------------
 Model 2: Demand-Based Pricing
+Demand = α·(Occupancy / Capacity) + β·QueueLength − γ·Traffic + δ·IsSpecialDay + ε·VehicleTypeWeight
+Price = BasePrice · (1 + λ · NormalizedDemand)
 
-        Demand = α·(Occupancy / Capacity) + β·QueueLength − γ·Traffic + δ·IsSpecialDay + ε·VehicleTypeWeight
-        Price = BasePrice · (1 + λ · NormalizedDemand)
+-- All weights (α, β, γ, δ, ε, λ) were manually tuned and interpreted.
 
-    -- All weights (α, β, γ, δ, ε, λ) were manually tuned and interpreted.
-    
-    -- Demand normalization ensures stable pricing:
-    
-    -- Prices are clipped between 0.5× and 2× the base price.
-    
-    -- Entire logic implemented using Pathway.with_columns() and pw.apply().
+-- Demand normalization ensures stable pricing:
+
+-- Prices are clipped between 0.5× and 2× the base price.
+
+-- Entire logic implemented using Pathway.with_columns() and pw.apply().
 -------------------------------------------------------------------------------------
 Real-Time Visualization
 
-        A live interactive dashboard was built using Bokeh and Panel.
+A live interactive dashboard was built using Bokeh and Panel.
 
 Features:
 
-        Dropdown to select a parking lot.
-        
-        Real-time line chart showing pricing fluctuations.
-        
-        Prices are computed using tumbling daily windows over the stream.
+Dropdown to select a parking lot.
+
+Real-time line chart showing pricing fluctuations.
+
+Prices are computed using tumbling daily windows over the stream.
 ---------------------------------------------------------------------------------------------
 
 📝 Assumptions
 IsSpecialDay is binary:
 
-    0 = normal, 1 = holiday or event
-    
-    VehicleTypeWeight mapping:
-    
-    car = 1.0
-    
-    bike/cycle = 0.5
-    
-    truck = 1.5
-    
-    TrafficLevel mapping:
-    
-    low = 0.2, average = 0.5, high = 1.0
-    
-    QueueLength capped at 5 for normalization purposes
+0 = normal, 1 = holiday or event
+
+VehicleTypeWeight mapping:
+
+car = 1.0
+
+bike/cycle = 0.5
+
+truck = 1.5
+
+TrafficLevel mapping:
+
+low = 0.2, average = 0.5, high = 1.0
+
+QueueLength capped at 5 for normalization purposes
 ------------------------------------------------------------------------------------
 🧠 Future Work
-    ✅ Implement Model 3: Competitive Pricing using lat-long proximity
-    
-    ➕ Add rerouting suggestions for full parking lots
-    
-    📈 Optimize demand weights using historical revenue or occupancy patterns
+✅ Implement Model 3: Competitive Pricing using lat-long proximity
+
+➕ Add rerouting suggestions for full parking lots
+
+📈 Optimize demand weights using historical revenue or occupancy patterns
 
 ---
 👤 Author

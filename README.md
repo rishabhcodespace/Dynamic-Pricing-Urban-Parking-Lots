@@ -65,7 +65,7 @@ graph TD
   - `vehicle type`
 - Pathway’s `replay_csv()` was used to simulate **real-time streaming** of this data into a processing pipeline.
 
----
+-----------------------------------------------------------------------------
 
 ### 2. **Model 1: Baseline Linear Pricing**
 A simple reference model for dynamic pricing:
@@ -81,7 +81,7 @@ See a time-series plot of real-time pricing.
 
 Each day's price is computed using tumbling windows.
 
----
+---------------------------------------------------------------------------
 Model 2: Demand-Based Pricing
 
         Demand = α·(Occupancy / Capacity) + β·QueueLength − γ·Traffic + δ·IsSpecialDay + ε·VehicleTypeWeight
@@ -94,7 +94,7 @@ Model 2: Demand-Based Pricing
     -- Prices are clipped between 0.5× and 2× the base price.
     
     -- Entire logic implemented using Pathway.with_columns() and pw.apply().
----
+-------------------------------------------------------------------------------------
 Real-Time Visualization
 
         A live interactive dashboard was built using Bokeh and Panel.
@@ -106,7 +106,7 @@ Features:
         Real-time line chart showing pricing fluctuations.
         
         Prices are computed using tumbling daily windows over the stream.
----
+---------------------------------------------------------------------------------------------
 
 📝 Assumptions
 IsSpecialDay is binary:
@@ -126,7 +126,7 @@ IsSpecialDay is binary:
     low = 0.2, average = 0.5, high = 1.0
     
     QueueLength capped at 5 for normalization purposes
----
+------------------------------------------------------------------------------------
 🧠 Future Work
     ✅ Implement Model 3: Competitive Pricing using lat-long proximity
     

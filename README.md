@@ -55,18 +55,13 @@ Real-time streaming was simulated using **Pathway**, and interactive price visua
   - `vehicle type`
 - Pathway’s `replay_csv()` was used to simulate **real-time streaming** of this data into a processing pipeline.
 
-### 2. **Model 1: Baseline Linear Pricing**
+## Model 1: Baseline Linear Pricing
 A simple reference model for dynamic pricing:
 
-Price_t+1 = Price_t + α × (Occupancy / Capacity)
-
-
-
-Select a parking lot from a dropdown.
-
-See a time-series plot of real-time pricing.
-
-Each day's price is computed using tumbling windows.
+- Price_t+1 = Price_t + α × (Occupancy / Capacity)
+- Select a parking lot from a dropdown.
+- See a time-series plot of real-time pricing.
+- Each day's price is computed using tumbling windows.
 
 # Model 2: Demand-Based Pricing
 - Demand = α·(Occupancy / Capacity) + β·QueueLength − γ·Traffic + δ·IsSpecialDay + ε·VehicleTypeWeight
@@ -79,7 +74,7 @@ Each day's price is computed using tumbling windows.
 ## Real-Time Visualization
 A live interactive dashboard was built using Bokeh and Panel.
 
-# Features
+Features : 
 - Dropdown to select a parking lot.
 - Real-time line chart showing pricing fluctuations.
 - Prices are computed using tumbling daily windows over the stream.

@@ -115,10 +115,10 @@ pip install pandas numpy bokeh panel pathway
 ### **Option 1: Run in Google Colab (recommended)**
 - Open notebook.ipynb in Google Colab.
 - Follow step-by-step:
- - `Data Preprocessing`
- - `Model 1 and Model 2 implementation`
- - `Real-time streaming with Pathway`
- - `Live Bokeh dashboard via Panel`
+  - `Data Preprocessing`
+  - `Model 1 and Model 2 implementation`
+  - `Real-time streaming with Pathway`
+  - `Live Bokeh dashboard via Panel`
 
 - At the end, run:
    ```pw.run()```

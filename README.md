@@ -107,8 +107,9 @@ cd urban-parking-dynamic-pricing
 ```
 
 ### **2. Install dependencies**
-
+```
 pip install pandas numpy bokeh panel pathway
+```
 
 ## How to Run the Project ? 
 ### **Option 1: Run in Google Colab (recommended)**
@@ -120,16 +121,16 @@ pip install pandas numpy bokeh panel pathway
  - `Live Bokeh dashboard via Panel`
 
 - At the end, run:
- - **pw.run()**
+   ```pw.run()```
 
 ### **Option 2: Run locally in Jupyter Notebook**
 - Launch Jupyter Notebook:
-   - **jupyter notebook**
+  ```jupyter notebook```
 
 - Open notebook.ipynb
 - Run each cell in order
 - Make sure Panel extensions load correctly:
-  - **pn.extension()**
+  ```pn.extension()```
     
 ---
 👤 Author

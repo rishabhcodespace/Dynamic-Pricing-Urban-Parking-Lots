@@ -1,11 +1,11 @@
-# 🚗 Dynamic Pricing for Urban Parking Lots
+#  Dynamic Pricing for Urban Parking Lots
 
 **Capstone Project | Summer Analytics 2025**  
 Hosted by [Consulting & Analytics Club, IIT Guwahati](https://www.caciitg.com/) × [Pathway](https://pathway.com)
 
 ---
 
-## 📌 Project Overview
+##  Project Overview
 
 Urban parking spaces are a scarce and valuable resource, especially in cities. Static pricing often leads to inefficiencies: either overcrowding (when prices are too low) or underutilization (when prices are too high).  
 
@@ -25,7 +25,7 @@ Real-time streaming was simulated using **Pathway**, and interactive price visua
 
 ---
 
-## 🧰 Tech Stack
+##  Tech Stack
 
 | Tool/Library | Purpose |
 |--------------|---------|
@@ -37,12 +37,12 @@ Real-time streaming was simulated using **Pathway**, and interactive price visua
 
 ---
 
-## 🏗️ Architecture Diagram (Mermaid)
+##  Architecture Diagram (Mermaid)
 
 ![image](https://github.com/user-attachments/assets/f212536e-f55e-458b-9577-449594110b29)
 
 ---
-## 🔍 Project Architecture & Workflow
+##  Project Architecture & Workflow
 
 ### 1. **Data Ingestion**
 - The raw dataset (`parking_stream.csv`) contains real-time snapshots of **14 parking lots** over **73 days**.
@@ -96,31 +96,21 @@ Real-time line chart showing pricing fluctuations.
 Prices are computed using tumbling daily windows over the stream.
 ---------------------------------------------------------------------------------------------
 
-📝 Assumptions
-IsSpecialDay is binary:
-
-0 = normal, 1 = holiday or event
-
-VehicleTypeWeight mapping:
-
-car = 1.0
-
-bike/cycle = 0.5
-
-truck = 1.5
-
-TrafficLevel mapping:
-
-low = 0.2, average = 0.5, high = 1.0
-
-QueueLength capped at 5 for normalization purposes
+## Assumptions
+  - IsSpecialDay is binary:
+  - 0 = normal, 1 = holiday or event
+  - VehicleTypeWeight mapping:
+  - car = 1.0
+  - bike/cycle = 0.5
+  - truck = 1.5
+  - TrafficLevel mapping:
+  - low = 0.2, average = 0.5, high = 1.0
+  - QueueLength capped at 5 for normalization purposes
 ------------------------------------------------------------------------------------
-🧠 Future Work
-✅ Implement Model 3: Competitive Pricing using lat-long proximity
-
-➕ Add rerouting suggestions for full parking lots
-
-📈 Optimize demand weights using historical revenue or occupancy patterns
+## Future Work
+- Implement Model 3: Competitive Pricing using lat-long proximity
+- Add rerouting suggestions for full parking lots
+- Optimize demand weights using historical revenue or occupancy patterns
 
 ---
 👤 Author

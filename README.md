@@ -44,7 +44,7 @@ Real-time streaming was simulated using **Pathway**, and interactive price visua
 ---
 ##  Project Architecture & Workflow
 
-### 1. **Data Ingestion**
+###  **Data Ingestion**
 - The raw dataset (`parking_stream.csv`) contains real-time snapshots of **14 parking lots** over **73 days**.
 - Each snapshot includes features like:
   - `timestamp`
@@ -97,6 +97,6 @@ Features :
 
 ---
 👤 Author
-Rishabh Kumar
-Summer Analytics 2025 Participant
-Consulting & Analytics Club × Pathway
+- Rishabh Kumar
+- Summer Analytics 2025 Participant
+- Consulting & Analytics Club × Pathway

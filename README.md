@@ -63,14 +63,14 @@ A simple reference model for dynamic pricing:
 - See a time-series plot of real-time pricing.
 - Each day's price is computed using tumbling windows.
 
-# Model 2: Demand-Based Pricing
+## Model 2: Demand-Based Pricing
 - Demand = α·(Occupancy / Capacity) + β·QueueLength − γ·Traffic + δ·IsSpecialDay + ε·VehicleTypeWeight
 - Price = BasePrice · (1 + λ · NormalizedDemand)
 - All weights (α, β, γ, δ, ε, λ) were manually tuned and interpreted.
 - Demand normalization ensures stable pricing
 - Prices are clipped between 0.5× and 2× the base price.
 - Entire logic implemented using Pathway.with_columns() and pw.apply().
-- 
+
 ## Real-Time Visualization
 A live interactive dashboard was built using Bokeh and Panel.
 
@@ -95,6 +95,41 @@ Features :
 - Add rerouting suggestions for full parking lots
 - Optimize demand weights using historical revenue or occupancy patterns
 
+##  Installation & Setup
+
+All code runs in Google Colab, so no setup is required.
+If you want to run locally, follow the steps below.
+
+### **1. Clone the repository**
+
+git clone https://github.com/your-username/urban-parking-dynamic-pricing.git
+cd urban-parking-dynamic-pricing
+
+### **2. Install dependencies**
+
+pip install pandas numpy bokeh panel pathway
+
+## How to Run the Project ? 
+### **Option 1: Run in Google Colab (recommended)**
+- Open notebook.ipynb in Google Colab.
+- Follow step-by-step:
+ - `Data Preprocessing`
+ - `Model 1 and Model 2 implementation`
+ - `Real-time streaming with Pathway`
+ - `Live Bokeh dashboard via Panel`
+
+- At the end, run:
+ - **pw.run()**
+
+### **Option 2: Run locally in Jupyter Notebook**
+- Launch Jupyter Notebook:
+   - **jupyter notebook**
+
+- Open notebook.ipynb
+- Run each cell in order
+- Make sure Panel extensions load correctly:
+  - **pn.extension()**
+    
 ---
 👤 Author
 - Rishabh Kumar

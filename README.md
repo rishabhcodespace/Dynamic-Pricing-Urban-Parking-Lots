@@ -101,9 +101,10 @@ All code runs in Google Colab, so no setup is required.
 If you want to run locally, follow the steps below.
 
 ### **1. Clone the repository**
-
+```
 git clone https://github.com/your-username/urban-parking-dynamic-pricing.git
 cd urban-parking-dynamic-pricing
+```
 
 ### **2. Install dependencies**
 
